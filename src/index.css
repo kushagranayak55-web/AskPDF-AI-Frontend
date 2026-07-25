@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-base text-slate-100 font-body antialiased;
+    background-image: radial-gradient(circle at 20% -10%, rgba(59, 130, 246, 0.12), transparent 45%),
+      radial-gradient(circle at 85% 10%, rgba(168, 85, 247, 0.1), transparent 40%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    @apply bg-accent-purple/30 text-white;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(168, 85, 247, 0.6);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-white/[0.06];
+  }
+
+  .glass-strong {
+    @apply bg-card/80 backdrop-blur-2xl border border-white/[0.08];
+  }
+
+  .gradient-text {
+    @apply bg-brand-gradient bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-gradient px-5 py-2.5
+      font-medium text-white shadow-glow transition-all duration-300
+      hover:shadow-glow-lg hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50
+      disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.03]
+      px-4 py-2 text-sm font-medium text-slate-300 transition-all duration-200
+      hover:bg-white/[0.07] hover:text-white hover:border-white/20;
+  }
+}
+
+/* Slim, elegant scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.18);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.32);
+}
+
+/* Hand-rolled markdown styling for assistant messages */
+.markdown-body p {
+  margin-bottom: 0.75em;
+}
+.markdown-body p:last-child {
+  margin-bottom: 0;
+}
+.markdown-body ul,
+.markdown-body ol {
+  margin: 0.5em 0 0.75em 1.25em;
+}
+.markdown-body ul {
+  list-style: disc;
+}
+.markdown-body ol {
+  list-style: decimal;
+}
+.markdown-body li {
+  margin-bottom: 0.25em;
+}
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3 {
+  @apply font-display font-medium text-slate-100;
+  margin: 0.9em 0 0.4em;
+}
+.markdown-body h1:first-child,
+.markdown-body h2:first-child,
+.markdown-body h3:first-child {
+  margin-top: 0;
+}
+.markdown-body h1 {
+  font-size: 1.15em;
+}
+.markdown-body h2 {
+  font-size: 1.08em;
+}
+.markdown-body h3 {
+  font-size: 1.02em;
+}
+.markdown-body a {
+  @apply text-accent-blue underline decoration-accent-blue/30 underline-offset-2 hover:decoration-accent-blue;
+}
+.markdown-body strong {
+  @apply text-slate-100 font-semibold;
+}
+.markdown-body code {
+  @apply rounded bg-black/40 px-1.5 py-0.5 font-mono text-[13px] text-accent-blue;
+}
+.markdown-body pre {
+  @apply my-2 overflow-x-auto rounded-xl border border-white/10 bg-black/40 p-3;
+}
+.markdown-body pre code {
+  @apply bg-transparent p-0 text-slate-200;
+}
+.markdown-body blockquote {
+  @apply my-2 border-l-2 border-accent-purple/40 pl-3 text-slate-400;
+}
+.markdown-body table {
+  @apply my-2 w-full border-collapse text-sm;
+}
+.markdown-body th,
+.markdown-body td {
+  @apply border border-white/10 px-2.5 py-1.5 text-left;
+}
+.markdown-body th {
+  @apply bg-white/[0.03] font-medium text-slate-200;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
